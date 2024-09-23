@@ -1,5 +1,35 @@
+@media only screen and (max-width: 600px) {
+  .messageInput {
+    width: 90%;
+  }
+
+  .sendBtn {
+    padding: 3px;
+    width: 10%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1280px) {
+  .messageInput {
+    width: 90%;
+  }
+  .sendBtn {
+    padding: 3px;
+    width: 10%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .messageInput {
+    width: 95%;
+  }
+  .sendBtn {
+    padding: 3px;
+    width: 5%;
+  }
+}
+
 .chatContainer {
-  height: 95vh;
   display: flex;
   flex-direction: column;
 }
@@ -8,10 +38,9 @@
   display: flex;
   flex-direction: column;
   text-align: justify;
-  height: 75%;
   overflow-y: scroll;
-  padding-left: 5px;
-  padding-right: 5px;
+  gap: 5px;
+  height: 500px;
 }
 .message {
   display: inline-block;
@@ -35,22 +64,21 @@
 
 .inputContainer {
   margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
 }
 
 .messageInput {
-  width: 95%;
+  padding-left: 5px;
 }
 
 .sendBtn {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3px;
   cursor: pointer;
   background-color: purple;
   color: white;
   border: 1px solid black;
   border-radius: 2px;
-  width: 5%;
 }

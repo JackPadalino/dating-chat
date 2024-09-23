@@ -39,15 +39,15 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    signOut(auth)
-      .then(() => {
-        console.log("User signed out.");
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       console.log("User signed out.");
+  //     })
+  //     .catch((error: any) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <div>
