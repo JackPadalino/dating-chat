@@ -1,0 +1,8 @@
+.messagesContainer {
+  background-color: #f1f1f1;
+  height: 500px;
+  width: 300px;
+  overflow-y: scroll;
+
+  text-align: justify;
+}
