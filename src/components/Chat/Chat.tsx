@@ -16,6 +16,7 @@ const Chat = () => {
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<any>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null); // Create a ref for scrolling
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMessage(e.currentTarget.value);
@@ -27,7 +28,6 @@ const Chat = () => {
     try {
       await addDoc(collection(db, "messages"), {
         createdAt: serverTimestamp(),
-        // user: user.uid === "uMkjvKnUIsXJrudILZJAm88YNXD2" ? "Jack" : "Jasmine",
         userId: user.uid,
         content: message,
       });
@@ -35,6 +35,9 @@ const Chat = () => {
       console.error("Error adding document: ", e);
     }
     setMessage("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   // use effect to check if user is signed in
@@ -94,9 +97,10 @@ const Chat = () => {
           onChange={handleMessageChange}
           placeholder="Say something nice..."
           className="messageInput"
+          ref={inputRef}
         />
         <button type="submit" className="sendBtn">
-          Send
+          <i className="material-icons">send</i>
         </button>
       </form>
     </div>
