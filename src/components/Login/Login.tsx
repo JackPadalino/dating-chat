@@ -1,35 +1,71 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [password, setPassword] = useState<string>("");
+  const [loginInfo, setLoginInfo] = useState<any>({
+    email: "",
+    passwordk: "",
+  });
   const [displayErrorMessage, setDisplayErrorMessage] =
     useState<boolean>(false);
 
-  const handlePasswordChange = (e: FormEvent<HTMLInputElement>) => {
-    setDisplayErrorMessage(false);
-    setPassword(e.currentTarget.value);
+  const handleLoginInfoChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setLoginInfo({
+      ...loginInfo,
+      [id]: value,
+    });
   };
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password === import.meta.env.VITE_CHAT_PASSWORD) {
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        loginInfo.email,
+        loginInfo.password
+      );
       navigate("/chat");
-    } else {
-      setPassword("");
+    } catch (error: any) {
+      // The 'any' type here captures any kind of error thrown
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`Error signing in (${errorCode}): ${errorMessage}`);
       setDisplayErrorMessage(true);
+      setLoginInfo({ email: "", password: "" });
     }
   };
+
+  useEffect(() => {
+    signOut(auth)
+      .then(() => {
+        console.log("User signed out.");
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
       <h1>This is the login component</h1>
       <form onSubmit={handleLogin}>
         <input
-          value={password}
+          type="email"
+          id="email"
+          value={loginInfo.email}
+          placeholder="Email"
+          onChange={handleLoginInfoChange}
+        />
+        <input
+          type="password"
+          id="password"
+          value={loginInfo.password}
           placeholder="Enter anniversary date."
-          onChange={handlePasswordChange}
+          onChange={handleLoginInfoChange}
         />
         <button type="submit">Login</button>
       </form>
