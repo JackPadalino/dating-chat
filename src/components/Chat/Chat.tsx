@@ -72,7 +72,7 @@ const Chat = () => {
 
   if (!user) return <p>Please sign in to join chat!</p>;
   return (
-    <div>
+    <div className="chatContainer">
       <div className="messagesContainer">
         {messages.map((message: any) => (
           <p
@@ -87,14 +87,17 @@ const Chat = () => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSendMessage}>
+      <form onSubmit={handleSendMessage} className="inputContainer">
         <input
           id="message"
           value={message}
           onChange={handleMessageChange}
           placeholder="Say something nice..."
+          className="messageInput"
         />
-        <button type="submit">Send</button>
+        <button type="submit" className="sendBtn">
+          Send
+        </button>
       </form>
     </div>
   );

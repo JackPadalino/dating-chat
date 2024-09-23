@@ -1,13 +1,19 @@
+.chatContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .messagesContainer {
   display: flex;
   flex-direction: column;
   text-align: justify;
+  height: 90%;
   overflow-y: scroll;
   border: 1px solid darkgray;
   padding-left: 5px;
   padding-right: 5px;
 }
-
 .message {
   display: inline-block;
   word-wrap: break-word;
@@ -26,4 +32,14 @@
 .theirMessages {
   background-color: lightgray;
   align-self: flex-start;
+}
+
+.inputContainer {
+  margin-top: 5px;
+  display: flex;
+  height: 5%;
+}
+
+.messageInput {
+  flex: 1;
 }
