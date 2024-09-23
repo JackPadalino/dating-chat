@@ -5,6 +5,7 @@ import {
   // signOut
 } from "firebase/auth";
 import { auth } from "../../../firebase";
+import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,8 +13,6 @@ const Login = () => {
     email: "",
     passwordk: "",
   });
-  const [displayErrorMessage, setDisplayErrorMessage] =
-    useState<boolean>(false);
 
   const handleLoginInfoChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -37,7 +36,6 @@ const Login = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error(`Error signing in (${errorCode}): ${errorMessage}`);
-      setDisplayErrorMessage(true);
       setLoginInfo({ email: "", password: "" });
     }
   };
@@ -53,28 +51,29 @@ const Login = () => {
   // }, []);
 
   return (
-    <div>
-      <h1>This is the login component</h1>
-      <form onSubmit={handleLogin}>
+    <div className="loginContainer">
+      <h1>Hinge</h1>
+      <form onSubmit={handleLogin} className="loginForm">
         <input
           type="email"
           id="email"
           value={loginInfo.email}
           placeholder="Email"
           onChange={handleLoginInfoChange}
+          className="loginInput"
         />
         <input
           type="password"
           id="password"
           value={loginInfo.password}
-          placeholder="Enter anniversary date."
+          placeholder="Enter anniversary date DD.MM.YYYY"
           onChange={handleLoginInfoChange}
+          className="loginInput"
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="loginBtn">
+          Login
+        </button>
       </form>
-      {displayErrorMessage && (
-        <p>Psst...Enter your annivseary date in the form DD.MM.YYYY</p>
-      )}
     </div>
   );
 };

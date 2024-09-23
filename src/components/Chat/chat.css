@@ -4,7 +4,6 @@
   }
 
   .sendBtn {
-    padding: 3px;
     width: 10%;
   }
 }
@@ -14,7 +13,6 @@
     width: 90%;
   }
   .sendBtn {
-    padding: 3px;
     width: 10%;
   }
 }
@@ -24,7 +22,6 @@
     width: 95%;
   }
   .sendBtn {
-    padding: 3px;
     width: 5%;
   }
 }
@@ -32,7 +29,6 @@
 .chatContainer {
   display: flex;
   flex-direction: column;
-  height: 75vh;
 }
 
 .messagesContainer {
@@ -41,13 +37,12 @@
   text-align: justify;
   overflow-y: scroll;
   gap: 5px;
-  height: 500px;
+  height: 600px;
 }
 .message {
   display: inline-block;
   word-wrap: break-word;
   border-radius: 2px;
-  font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   max-width: 75%;
 }
@@ -70,7 +65,9 @@
 }
 
 .messageInput {
-  padding-left: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  height: 25px;
 }
 
 .sendBtn {
@@ -81,5 +78,6 @@
   background-color: purple;
   color: white;
   border: 1px solid black;
-  border-radius: 2px;
+  border-radius: 3px;
+  padding: 3px;
 }

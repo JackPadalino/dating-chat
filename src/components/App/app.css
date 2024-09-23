@@ -3,7 +3,14 @@
   padding: 0px;
 }
 
+p,
+h1,
+h2,
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .appContainer {
   height: 95vh;
-  padding: 5px;
+  padding: 10px;
 }
