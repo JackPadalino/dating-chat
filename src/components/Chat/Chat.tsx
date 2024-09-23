@@ -77,18 +77,19 @@ const Chat = () => {
   return (
     <div className="chatContainer">
       <div className="messagesContainer">
-        {messages.map((message: any) => (
+        {messages.map((message: any, index: number) => (
           <p
             className={
               message.userId === user.uid
                 ? "message myMessages"
                 : "message theirMessages"
             }
+            ref={index === messages.length - 1 ? messagesEndRef : null}
           >
             {message.content}
           </p>
         ))}
-        <div ref={messagesEndRef} />
+        <div />
       </div>
       <form onSubmit={handleSendMessage} className="inputContainer">
         <input
