@@ -27,7 +27,8 @@ const Chat = () => {
     try {
       await addDoc(collection(db, "messages"), {
         createdAt: serverTimestamp(),
-        user: user.uid === "uMkjvKnUIsXJrudILZJAm88YNXD2" ? "Jack" : "Jasmine",
+        // user: user.uid === "uMkjvKnUIsXJrudILZJAm88YNXD2" ? "Jack" : "Jasmine",
+        userId: user.uid,
         content: message,
       });
     } catch (e) {
@@ -74,7 +75,15 @@ const Chat = () => {
     <div>
       <div className="messagesContainer">
         {messages.map((message: any) => (
-          <p key={message.id}>{message.content}</p>
+          <p
+            className={
+              message.userId === user.uid
+                ? "message myMessages"
+                : "message theirMessages"
+            }
+          >
+            {message.content}
+          </p>
         ))}
         <div ref={messagesEndRef} />
       </div>
