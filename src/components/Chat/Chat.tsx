@@ -48,13 +48,6 @@ const Chat = () => {
     return () => unsubscribe();
   }, []);
 
-  // scroll to bottom whenever messages change
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
   // use effect to get real time messages from firestore
   useEffect(() => {
     const messagesRef = collection(db, "messages");
@@ -68,6 +61,13 @@ const Chat = () => {
     });
     return () => unsubscribe();
   }, []);
+
+  // scroll to bottom whenever messages change
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   if (!user) return <p>Please sign in to join chat!</p>;
   return (

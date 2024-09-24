@@ -21,7 +21,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 95vh;
+  height: 100%;
+  background-color: red;
+  gap: 5px;
+}
+
+.loginSubTitle {
+  font-size: 14px;
 }
 
 .loginForm {
