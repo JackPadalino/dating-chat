@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <div className="loginContainer">
       <h1 className="loginTitle">Hinge</h1>
-      <p className="loginSubTitle">The dating app designed to be deleted.</p>
+      <p className="loginSubTitle">The dating app designed to be deleted</p>
       <form onSubmit={handleLogin} className="loginForm">
         <input
           type="email"
